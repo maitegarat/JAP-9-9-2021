@@ -7,7 +7,7 @@ function sortLibros(criterio, array) {
     let result = [];
 
     if (criterio === 1) {
-        result = array.sort(function (a, b) { 
+        result = array.sort(function (a, b) {   
             if (a.paginas < b.paginas) { return -1; } 
             if (a.paginas > b.paginas) { return 1; } 
             return 0;
@@ -30,6 +30,11 @@ function sortLibros(criterio, array) {
 
     return result;
 }
+ 
+function verLibro(id) {
+ localStorage.setItem("idLibro", id)  
+ window.location = "id.html"
+}
 
 function showLibros(array) {
 
@@ -45,11 +50,15 @@ function showLibros(array) {
                     contenido += 'Título: ' + libro.titulo + '<br>';
                     contenido += 'Editorial: ' + libro.editorial + '<br>';
                     contenido += 'Páginas: ' + libro.paginas + '<br>';
+                    contenido += `<button id="infoLibro" onclick="verLibro(`+ libro.id +`)">Ver más</button>`
+                    //contenido += '<button id="infoLibro" onclick="window.location='+libro.id+'.html'+' ">Ver más</button>'
                     contenido += '<br><hr><br>'
+
 
                 }
         }
         document.getElementById("listado").innerHTML = contenido;
+
     }
 }
 

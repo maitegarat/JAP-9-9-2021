@@ -5,31 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Libro</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="scripts/init.js"></script>
     <script src="scripts/LibrosInfo.js"></script>
 </head>
 
 <body>
     <div id="infoLibro"></div>
-    <form action="" method="get">
+    <form action="#" method="get" id="formulario">
         <h4>¿En qué fecha se publicó?</h4>
-        <input type="radio" name="preg1" id="p1op1"> 1
-        <input type="radio" name="preg1" id="p1op2"> 2
-        <input type="radio" name="preg1" id="p1op3"> 3
+        <input type="radio" name="preg1" id="p1op1"  value = 0 required> 1998
+        <input type="radio" name="preg1" id="p1op2"> 
+        <label for="p1op2"  id= "lbp1"></label>
+        <input type="radio" name="preg1" id="p1op3" value = 0 > 1970
+        
 
         <h4>¿En que departamento nació el autor?</h4>
-        <input type="radio" name="preg2" id="p2op1"> 1
-        <input type="radio" name="preg2" id="p2op2"> 2
-        <input type="radio" name="preg2" id="p2op3"> 3
+        <input type="radio" name="preg2" id="p2op1" value = 0 required> Canelones
+        <input type="radio" name="preg2" id="p2op2" value = 0 > Artigas
+        <input type="radio" name="preg2" id="p2op3"> 
+        <label for="p2op3" id= "lbp2"></label>
         
-        <h4>¿Qué ?</h4>
-        <input type="radio" name="preg3" id="p3op1"> 1
-        <input type="radio" name="preg3" id="p3op2"> 2
-        <input type="radio" name="preg3" id="p3op3"> 3
-
-
-        <button type="submit" id="subbttn">Enviar</button>
+        <h4>¿Cuál es el género del libro?</h4>
+        <input type="radio" name="preg3" id="p3op1" required> 
+        <label for="p3op1" id= "lbp3"></label>
+        <input type="radio" name="preg3" id="p3op2" value = 0 > Fantasía
+        <input type="radio" name="preg3" id="p3op3" value = 0 > Polícial
         
+        <br>
+
+        <button type="submit" id="boton">Enviar</button>
+        
+        
+        
+
     </form>
+   
+   
+   
+    <div>
+        <div id="seccprom"></div>
+        <div id="stars"></div>
+    </div>
+
 </body>
+
+<script src="scripts/estrellas.js"></script>
+
 </html>

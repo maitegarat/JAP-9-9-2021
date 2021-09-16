@@ -27,14 +27,14 @@ var preguntaslibro =
         {
             id: 4,
             respuestascorrectas: [
-                "1971", "¿Cuantos relatos contiene?", "Ensayo y reportaje"
+                "2003", "Montevideo", "Novela"
             ]
         },
 
         {
             id: 5,
             respuestascorrectas: [
-                "", "¿Cuantos relatos contiene?", "¿De qué estaba hecho el almohadón?"
+                "1971", "Montevideo", "Ensayo y reportaje"
             ]
         }
 
@@ -57,9 +57,80 @@ function mostrarLibro(libros) {
         document.getElementById("infoLibro").innerHTML = contenido;
     }
 
+    for (let respuestas of preguntaslibro) {
+        if (respuestas.id == localStorage.getItem("idLibro")) {
 
+            document.getElementById("p1op2").value = 1
+            document.getElementById("lbp1").innerHTML = respuestas.respuestascorrectas[0]
+
+            document.getElementById("p2op3").value = 1
+            document.getElementById("lbp2").innerHTML = respuestas.respuestascorrectas[1]
+
+            document.getElementById("p3op1").value = 1
+            document.getElementById("lbp3").innerHTML = respuestas.respuestascorrectas[2]
+        }
+    }
 
 }
+
+
+function contador() {
+
+    let cantTest;
+    if (localStorage.getItem("cantTest")) {
+        cantTest = localStorage.getItem("cantTest");
+        cantTest++;
+        localStorage.setItem("cantTest", cantTest);
+    } else {
+        localStorage.setItem("cantTest", 1);
+    }
+}
+
+function contadorRespuestas(){
+
+    let respuestas1 = document.getElementsByName("preg1");
+    let respuestas2 = document.getElementsByName("preg2");
+    let respuestas3 = document.getElementsByName("preg3");
+     
+    let puntaje = 0;
+    let puntajetotal;
+
+    for (let respuesta of respuestas1) {
+        if (respuesta.checked) {
+            puntaje += parseInt(respuesta.value)
+            
+        } 
+    }
+    
+    for (let respuesta of respuestas2) {
+        if (respuesta.checked) {
+            puntaje += parseInt(respuesta.value)
+        } 
+    }
+   
+    for (let respuesta of respuestas3) {
+        if (respuesta.checked) {
+            puntaje += parseInt(respuesta.value)
+        } 
+    }
+
+    if (localStorage.getItem("puntuacion")) {
+        puntajetotal = parseInt(localStorage.getItem("puntuacion"));
+        puntajetotal += puntaje
+        localStorage.setItem("puntuacion", puntajetotal);
+    } else {
+        localStorage.setItem("puntuacion", puntaje);
+    }
+}
+
+function promedio() {
+        
+    let prom = parseInt(localStorage.getItem("puntuacion"))/parseInt(localStorage.getItem("cantTest"))
+   
+    document.getElementById("seccprom").innerHTML = prom;
+
+}
+
 
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(LIBROS_URL).then(function (resultObj) {
@@ -67,6 +138,16 @@ document.addEventListener("DOMContentLoaded", function (e) {
             librosArray = resultObj.data;
 
             mostrarLibro(librosArray);
+            promedio()
         }
     });
+   
+    document.getElementById("formulario").addEventListener("submit", function () {
+        contador();
+        contadorRespuestas();
+        window.location.href = "id.html"
+     });
+
 });
+
+

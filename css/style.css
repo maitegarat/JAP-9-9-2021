@@ -27,3 +27,26 @@
   border: 1px black solid; 
 }
 
+.star-rating{
+  float: left;
+}
+
+.star-rating > input{
+  display: none;
+
+}
+
+.star-rating label {
+  font-size: 40px;
+  color: #444;
+  padding: 10px;
+  float: right;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type=radio]:checked ~ label {
+    color: #fd4;
+}

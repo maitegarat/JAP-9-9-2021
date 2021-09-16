@@ -51,7 +51,6 @@ function showLibros(array) {
                     contenido += 'Editorial: ' + libro.editorial + '<br>';
                     contenido += 'Páginas: ' + libro.paginas + '<br>';
                     contenido += `<button id="infoLibro" onclick="verLibro(`+ libro.id +`)">Ver más</button>`
-                    //contenido += '<button id="infoLibro" onclick="window.location='+libro.id+'.html'+' ">Ver más</button>'
                     contenido += '<br><hr><br>'
 
 
